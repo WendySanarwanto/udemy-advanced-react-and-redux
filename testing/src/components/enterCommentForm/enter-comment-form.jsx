@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { submitComment } from '../../actions';
 import './enter-comment-form.css';
 
 class EnterCommentForm extends Component {
@@ -7,8 +9,9 @@ class EnterCommentForm extends Component {
   onFormSubmit(event){
     event.preventDefault();
 
-    // TODO: Pass in the comment Entry into submitComment action creator
-    console.log(`[DEBUG] - <EnterCommentForm.onFormSubmit> this.state.commentEntry: ${this.state.commentEntry}`);
+    // Pass in the comment Entry into submitComment action creator
+    // console.log(`[DEBUG] - <EnterCommentForm.onFormSubmit> this.state.commentEntry: ${this.state.commentEntry}`);
+    this.props.submitComment(this.state.commentEntry);
 
     // empty the comment entry input field
     this.setState({ commentEntry: "" });
@@ -30,4 +33,4 @@ class EnterCommentForm extends Component {
   }
 }
 
-export default EnterCommentForm;
+export default connect(null, { submitComment })(EnterCommentForm);
