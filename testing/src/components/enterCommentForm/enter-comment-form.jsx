@@ -26,7 +26,7 @@ class EnterCommentForm extends Component {
             className="form-control" placeholder="Here is my comment"
             value={this.state.commentEntry}
             onChange={e => this.setState({ commentEntry: e.target.value })}/>
-          <button className="btn btn-default" type="submit">Submit</button>
+          <button className="btn btn-primary" type="submit">Submit</button>
         </form>        
       </div>
     );
