@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './app.css';
+import EnterCommentForm from './enterCommentForm';
+import CommentsList from './commentsList';
 
 class App extends Component {
   render() {
     return (
       <div className="app container">
-        <h4 className="app-header">Put more components here !</h4>
+        <EnterCommentForm />
+        <CommentsList />
       </div>
     );
   }
