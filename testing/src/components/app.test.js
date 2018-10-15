@@ -5,17 +5,17 @@ import EnterCommentForm from './enterCommentForm';
 import CommentsList from './commentsList';
 
 describe("App Component", () => {
-  
-  function showComponentTest(component){
-    const wrapped = shallow(<App />);
-    expect(wrapped.find(component).length).toEqual(1);
-  }
+  let wrapped = null;
+
+  beforeEach(() => {
+    wrapped = shallow(<App />);
+  });
 
   it(`shows an enter comments form `, () => {
-    showComponentTest(EnterCommentForm);
+    expect(wrapped.find(EnterCommentForm).length).toEqual(1);
   });
   
   it(`shown the comments list`, () => {
-    showComponentTest(CommentsList);
+    expect(wrapped.find(CommentsList).length).toEqual(1);
   })
 });
