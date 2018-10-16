@@ -18,45 +18,36 @@ describe('Enter Comment Form', () => {
     expect (wrapped.find(`button`).length).toEqual(1);
   });
 
-  it(`allows user to enter value on the textarea field`, () => {
+  describe(`The Text Area`, () => {
     const enteredInput = "Hello World !";
 
-    // Simulate change event on the textarea
-    wrapped.find('textarea').simulate('change', { 
-      target: {
-        value: enteredInput
-      }
-    });
-    
-    // force component to re-render
-    wrapped.update();
-    
-    expect(wrapped.find('textarea').prop('value')).toEqual(enteredInput);
-  });
-
-  it(`empties textarea when the input is submitted`, ()=>{
-    const enteredInput = "Hello World !";
-
-    // Simulate change event on the textarea
-    wrapped.find('textarea').simulate('change', { 
-      target: {
-        value: enteredInput
-      }
-    });
-    
-    // force component to re-render
-    wrapped.update();
-    expect(wrapped.find('textarea').prop('value')).toEqual(enteredInput);
-
-    // Simulate form's on submit event
-    wrapped.find(`form`).simulate('submit', {
-      target: {
-        preventDefault: () => {}
-      }
+    beforeEach(() => {
+      // Simulate change event on the textarea
+      wrapped.find('textarea').simulate('change', { 
+        target: {
+          value: enteredInput
+        }
+      });
+      
+      // force component to re-render
+      wrapped.update();
     });
 
-    // force component to re-render
-    wrapped.update();    
-    expect(wrapped.find('textarea').prop('value')).toEqual("");
+    it(`allows user to enter value on the textarea field`, () => {      
+      expect(wrapped.find('textarea').prop('value')).toEqual(enteredInput);
+    });
+  
+    it(`empties textarea when the input is submitted`, ()=>{
+      // Simulate form's on submit event
+      wrapped.find(`form`).simulate('submit', {
+        target: {
+          preventDefault: () => {}
+        }
+      });
+  
+      // force component to re-render
+      wrapped.update();    
+      expect(wrapped.find('textarea').prop('value')).toEqual("");
+    });  
   });
 });
