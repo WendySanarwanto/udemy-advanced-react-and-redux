@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { submitComment } from '../../actions';
 import './enter-comment-form.css';
 
-class EnterCommentForm extends Component {
+export class EnterCommentForm extends Component {
   state = { commentEntry: "" };
 
   onFormSubmit(event){
