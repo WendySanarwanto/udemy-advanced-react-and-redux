@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import EnterCommentForm from './enter-comment-form';
+import EnterCommentForm from '../enterCommentForm/enter-comment-form';
 import Root from '../../root';
 
 describe('Enter Comment Form', () => {

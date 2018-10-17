@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './app';
-import EnterCommentForm from './enterCommentForm';
-import CommentsList from './commentsList';
+import App from '../app';
+import EnterCommentForm from '../enterCommentForm';
+import CommentsList from '../commentsList';
 
 describe("App Component", () => {
   let wrapped = null;
