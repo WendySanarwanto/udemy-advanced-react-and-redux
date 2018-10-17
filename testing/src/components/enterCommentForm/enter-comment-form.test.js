@@ -1,12 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { EnterCommentForm } from './enter-comment-form';
+import EnterCommentForm from './enter-comment-form';
+import Root from '../../root';
 
 describe('Enter Comment Form', () => {
   let wrapped = null;
 
   beforeEach(() => {
-    wrapped = mount(<EnterCommentForm submitComment={()=>{}} />);
+    wrapped = mount(
+      <Root>
+        <EnterCommentForm submitComment={()=>{}} />
+      </Root>
+    );
   });
 
   afterEach(() => {

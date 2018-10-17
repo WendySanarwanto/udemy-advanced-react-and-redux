@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 
 import 'index.css';
 import App from 'components/app';
-import { appStore } from 'stores';
+import Root from './root';
+// import { appStore } from 'stores';
 
 ReactDOM.render(
-  <Provider store={appStore}>
+  <Root>
     <App />
-  </Provider>,   
+  </Root>,
   document.querySelector('#root'));
