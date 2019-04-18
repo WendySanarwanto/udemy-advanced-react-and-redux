@@ -1,10 +1,11 @@
 import _ from 'lodash';
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 
-class CommentsList extends Component {
-
-  renderComments(items){
+const CommentsList = (props) => {
+  
+  const renderComments = items => {
     return (
       _.map(items, item => {
         return (
@@ -16,20 +17,19 @@ class CommentsList extends Component {
     );
   }
 
-  render() {
-    const { comments } = this.props;
-    return (
-      <div className="items-list-container">
-        <hr/>
-        <h4>Comments list</h4>
-        { !comments || _.size(comments) < 1 ? <span>You have not entered any comments here.</span> : '' }
-        <ul className="list-group">
-          {comments && _.size(comments) > 0 ? this.renderComments(comments) : ''}
-        </ul>
-      </div>
-    );
-  }
-}
+  const { comments } = props;
+
+  return (
+    <div className="items-list-container">
+      <hr/>
+      <h4>Comments list</h4>
+      { !comments || _.size(comments) < 1 ? <span>You have not entered any comments here.</span> : '' }
+      <ul className="list-group">
+        {comments && _.size(comments) > 0 ? renderComments(comments) : ''}
+      </ul>
+    </div>
+  );
+};
 
 function mapStateToProps({comments}) {
   return { comments }
