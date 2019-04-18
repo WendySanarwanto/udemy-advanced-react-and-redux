@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './app.css';
-import EnterCommentForm from './enterCommentForm';
-import CommentsList from './commentsList';
+import './App.css';
+import CommentBox from './CommentBox';
+import CommentList from './CommentList';
 
 class App extends Component {
   render() {
     return (
       <div className="app container">
-        <EnterCommentForm />
-        <CommentsList />
+        <CommentBox />
+        <CommentList />
       </div>
     );
   }

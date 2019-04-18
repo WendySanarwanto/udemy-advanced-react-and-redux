@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { submitComment } from '../../actions';
-import './enter-comment-form.css';
+import { submitComment } from '../actions';
+import './CommentBox.css';
 
-class EnterCommentForm extends Component {
+class CommentBox extends Component {
   state = { commentEntry: "" };
 
   onFormSubmit(event){
@@ -33,4 +33,4 @@ class EnterCommentForm extends Component {
   }
 }
 
-export default connect(null, { submitComment })(EnterCommentForm);
+export default connect(null, { submitComment })(CommentBox);

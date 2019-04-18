@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import EnterCommentForm from '../enterCommentForm/enter-comment-form';
+import CommentBox from '../CommentBox';
 import Root from '../../root';
 
 describe('Enter Comment Form', () => {
@@ -9,7 +9,7 @@ describe('Enter Comment Form', () => {
   beforeEach(() => {
     wrapped = mount(
       <Root>
-        <EnterCommentForm submitComment={()=>{}} />
+        <CommentBox submitComment={()=>{}} />
       </Root>
     );
   });
