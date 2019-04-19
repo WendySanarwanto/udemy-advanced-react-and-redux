@@ -1,15 +1,17 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import CommentBox from '../CommentBox';
-import Root from '../../root';
+import { mount, u } from 'enzyme';
 
-describe('Enter Comment Form', () => {
+import CommentBox from '../CommentBox';
+import Root from '../../Root';
+
+describe(`CommentBox`, () => {
   let wrapped = null;
+  const textAreaInput = 'ReactJS is Awesome !!!';
 
   beforeEach(() => {
     wrapped = mount(
       <Root>
-        <CommentBox submitComment={()=>{}} />
+        <CommentBox />
       </Root>
     );
   });
@@ -18,41 +20,55 @@ describe('Enter Comment Form', () => {
     wrapped.unmount();
   });
 
-  it(`has a text area and button`, () => {
-    expect(wrapped.find('textarea').length).toEqual(1);
-    expect (wrapped.find(`button`).length).toEqual(1);
+  const doRefresh = (target, targetName) => {
+    target.update();
+    return wrapped.find(targetName); 
+  }
+
+  it(`has a text area and a button`, () => {    
+    expect(wrapped.find('textarea')).toHaveLength(1);
+    expect(wrapped.find('button')).toHaveLength(1);
   });
 
-  describe(`The Text Area`, () => {
-    const enteredInput = "Hello World !";
+  describe(`the text area`, () => {
+    let textarea;
 
     beforeEach(() => {
-      // Simulate change event on the textarea
-      wrapped.find('textarea').simulate('change', { 
-        target: {
-          value: enteredInput
-        }
-      });
+      // Find the text area element
+      textarea = wrapped.find('textarea');
+      expect(textarea).toHaveLength(1);
       
-      // force component to re-render
-      wrapped.update();
+      // Simulate a 'change' event & Provide a fake event object
+      const expected = textAreaInput;
+      textarea.simulate('change', { target: { value: expected } });
+  
+      // Force the component to update
+      textarea.update();
+  
+      // Important! Need to Re-wrapp target component.
+      textarea = wrapped.find('textarea'); 
     });
 
-    it(`allows user to enter value on the textarea field`, () => {      
-      expect(wrapped.find('textarea').prop('value')).toEqual(enteredInput);
+    it(`has a text area that users can type in`, () => {
+      // Assert that the textareas value has changes
+      expect(textarea.prop('value')).toEqual(textAreaInput);
     });
   
-    it(`empties textarea when the input is submitted`, ()=>{
-      // Simulate form's on submit event
-      wrapped.find(`form`).simulate('submit', {
-        target: {
-          preventDefault: () => {}
-        }
-      });
+    it(`clears the text area, when form is submitted`, () => {
+      // Find the form element
+      let form = wrapped.find('form');
+      expect(form).toHaveLength(1);
   
-      // force component to re-render
-      wrapped.update();    
-      expect(wrapped.find('textarea').prop('value')).toEqual("");
-    });  
+      const input = textAreaInput;
+      expect(textarea.prop('value')).toEqual(input);
+  
+      form.simulate('submit', { preventDefault: () => {} });
+      form.update();
+      textarea = doRefresh(textarea, 'textarea');
+      expect(textarea.prop('value')).toEqual('');
+    });
+
   });
+
+
 });

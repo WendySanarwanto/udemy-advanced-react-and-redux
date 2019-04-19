@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import App from './components/App';
-import Root from './root';
+import Root from './Root';
 // import { appStore } from 'stores';
 
 ReactDOM.render(
