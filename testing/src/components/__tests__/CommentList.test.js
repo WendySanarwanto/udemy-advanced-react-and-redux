@@ -14,11 +14,11 @@ describe(`CommentList`, () => {
           id2 = shortid.generate();
     comment1 = {
       id: id1,
-      comment: 'Comment 1'
+      name: 'Comment 1'
     };
     comment2 = {
       id: id2,
-      comment: 'Comment 2'
+      name: 'Comment 2'
     };
     const initialState = { 
       comments: {
