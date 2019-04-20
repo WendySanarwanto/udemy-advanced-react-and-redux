@@ -1,11 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { appStore } from './stores';
+import { createStore } from 'redux';
+import reducers from './reducers';
 
-export default (props) => {
+export default ({ children, initialState }) => {
+  const appStore = createStore(reducers, initialState);
+  
   return (
     <Provider store={appStore}>
-      {props.children}
+      { children }
     </Provider>
   );
 }
