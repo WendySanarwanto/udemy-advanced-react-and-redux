@@ -11,7 +11,7 @@ const CommentsList = (props) => {
       _.map(items, item => {
         return (
           <li className="list-group-item" key={item.id}>
-            {item.comment}
+            {item.name}
           </li>
         )
       })
