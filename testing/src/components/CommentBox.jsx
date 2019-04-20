@@ -1,7 +1,7 @@
 // import React, { Component } from 'react'
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { submitComment } from '../actions';
+import { fetchComments, submitComment } from '../actions';
 import './CommentBox.css';
 
 const CommentBox = props => {
@@ -24,9 +24,12 @@ const CommentBox = props => {
           value={ commentEntry }
           onChange={ e => setCommentEntry( e.target.value ) }/>
         <button className="btn btn-primary" type="submit">Submit</button>
+        <button className="btn btn-success" type="button"
+                style={ { marginLeft: '1em' } }
+                onClick={ () => props.fetchComments() } >Fetch Comments</button>
       </form>        
     </div>
   );
 }
 
-export default connect(null, { submitComment })(CommentBox);
+export default connect(null, { fetchComments, submitComment })(CommentBox);
