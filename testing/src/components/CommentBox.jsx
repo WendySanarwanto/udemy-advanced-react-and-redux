@@ -24,7 +24,7 @@ const CommentBox = props => {
           value={ commentEntry }
           onChange={ e => setCommentEntry( e.target.value ) }/>
         <button className="btn btn-primary" type="submit">Submit</button>
-        <button className="btn btn-success" type="button"
+        <button id="btn-fetch-comments" className="btn btn-success" type="button"
                 style={ { marginLeft: '1em' } }
                 onClick={ () => props.fetchComments() } >Fetch Comments</button>
       </form>        
