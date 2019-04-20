@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 const CommentsList = (props) => {
   
   const renderComments = items => {
+    // console.log(`[debug]<CommentsList@renderComments> items: \n`, items);
     return (
       _.map(items, item => {
         return (
@@ -32,6 +33,7 @@ const CommentsList = (props) => {
 };
 
 function mapStateToProps({comments}) {
+  // console.log(`[debug]<CommentsList@mapStateToProps> comments: \n`, comments);
   return { comments }
 }
 
