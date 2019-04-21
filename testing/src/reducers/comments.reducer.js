@@ -10,7 +10,7 @@ export default function(state={}, action){
       const updatedState = { ...state, 
         [newId]: {
           id: newId,
-          comment: action.payload
+          name: action.payload
         }
       };
       // console.log(`[DEBUG] - <comments.reducer> updatedState: \n`, updatedState);
