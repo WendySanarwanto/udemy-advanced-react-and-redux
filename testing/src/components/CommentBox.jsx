@@ -1,8 +1,9 @@
-// import React, { Component } from 'react'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux';
+
 import { fetchComments, submitComment } from '../actions';
 import './CommentBox.css';
+import requireAuth from './requireAuth';
 
 const CommentBox = props => {
   const [commentEntry, setCommentEntry] = useState('');
@@ -14,14 +15,6 @@ const CommentBox = props => {
     // empty the comment entry input field
     setCommentEntry('');
   }
-  const onAuthChanged = () => {
-    const isSignedIn = props.auth;
-    if (!isSignedIn) {
-      props.history.push(`/`);
-    }
-  }
-
-  useEffect(onAuthChanged, [props.auth]);
 
   return (
     <div>
@@ -40,8 +33,4 @@ const CommentBox = props => {
   );
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
-}
-
-export default connect(mapStateToProps, { fetchComments, submitComment })(CommentBox);
+export default connect(null, { fetchComments, submitComment })(requireAuth(CommentBox));
