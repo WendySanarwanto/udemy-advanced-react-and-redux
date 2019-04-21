@@ -25,7 +25,7 @@ const App = props => {
   
   const renderHeader = () => {
     return (
-      <nav class="navbar navbar-default">
+      <nav className="navbar navbar-default">
         <ul className="nav navbar-nav">
           <li>
             <Link to="/">Home</Link>
