@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { FETCH_COMMENTS, SUBMIT_COMMENT } from './types';
-export { FETCH_COMMENTS, SUBMIT_COMMENT };
+import { FETCH_COMMENTS, SUBMIT_COMMENT, CHANGE_AUTH } from './types';
+export { FETCH_COMMENTS, SUBMIT_COMMENT, CHANGE_AUTH };
 
 const API_HOST_URL = `https://jsonplaceholder.typicode.com`;
 
@@ -19,5 +19,12 @@ export function submitComment(comment) {
   return {
     type: SUBMIT_COMMENT,
     payload: comment
+  };
+}
+
+export function changeAuth(isSignedIn) {
+  return {
+    type: CHANGE_AUTH,
+    payload: isSignedIn
   };
 }
