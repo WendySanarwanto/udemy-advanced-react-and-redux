@@ -22,7 +22,7 @@ const CommentsList = (props) => {
 
   return (
     <div className="items-list-container">
-      <hr/>
+      {/* <hr/> */}
       <h4>Comments list</h4>
       { !comments || _.size(comments) < 1 ? <span>You have not entered any comments here.</span> : '' }
       <ul className="list-group">

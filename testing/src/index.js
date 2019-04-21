@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import './index.css';
 import App from './components/App';
 import Root from './Root';
-// import { appStore } from 'stores';
 
-ReactDOM.render(
+ReactDOM.render(  
   <Root>
-    <App />
+    <BrowserRouter>
+      <Route path="/" component={ App } />
+    </BrowserRouter>
   </Root>,
   document.querySelector('#root'));
