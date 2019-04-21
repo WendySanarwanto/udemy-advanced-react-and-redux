@@ -35,11 +35,13 @@ it(`can fetch a list of comments and display them`, (done) => {
   buttonFetchComments.simulate('click');
 
   // Introduce a tiny little pause to ensure the comments are picked before being asserted.
-  setTimeout(() => {
+  // setTimeout(() => {
+  moxios.wait(() => {
     wrapped.update();
     // Expect to find a list of comments
     // console.log(`wrapped.find('li').length = ${wrapped.find('li').length}`);
     expect(wrapped.find('li')).toHaveLength(2);
     done();
-  }, 100);
+  });
+  // }, 100);
 });
