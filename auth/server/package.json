@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "dev": "nodemon index.js",
     "mongodb": "docker run --name mongodb -d -p 27017:27017 mongo:4.1.10",
     "mongodbstart": "docker start mongodb",
     "mongodbstop": "docker stop mongodb"
@@ -16,5 +16,8 @@
     "express": "^4.16.4",
     "mongoose": "^5.5.2",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
