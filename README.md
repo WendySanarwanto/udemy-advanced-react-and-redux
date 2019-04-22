@@ -26,6 +26,8 @@ This repo contains coding exercises that were created when I followed Udemy's [A
 
   - Replacing [redux-promise](https://www.npmjs.com/package/redux-promise) middleware with a custom middleware.
   
-  - Set debug breakpoint by adding `debugger` line. 
+  - Set debug breakpoint by adding `debugger` line.
+  
+  - Create a custom middleware which does JSON schema validation against `redux state`, by using [JSON Schema](https://json-schema.org/) and [tv4](https://www.npmjs.com/package/tv4) validation library.
 
 __TODO: Add more info here__
