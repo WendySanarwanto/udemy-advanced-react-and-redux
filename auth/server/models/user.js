@@ -48,10 +48,13 @@ userSchema.pre('save', function(next) {
 });
 
 // Add methods
-userSchema.methods.comparePassword = function(candidatePassword, callback) {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    if (err) { return callback(err); }
-    callback(null, isMatch);
+userSchema.methods.comparePassword = function(candidatePassword) {
+  const password = this.password;
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(candidatePassword, password, (err, isMatch) => {
+      if (err) { return reject(err); }
+      resolve(isMatch);
+    });  
   });
 };
 
