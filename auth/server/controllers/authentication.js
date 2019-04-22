@@ -1,4 +1,10 @@
+const jwt = require('jwt-simple');
 const User = require('../models/user');
+
+function tokenForUser(user, secret) {
+  const timeStamp = new Date().getTime();
+  return jwt.encode({ sub: user.id, iat: timeStamp }, secret);
+}
 
 exports.signUp = async (req, res, next) => {
   const email = req.body.email;
@@ -19,6 +25,12 @@ exports.signUp = async (req, res, next) => {
       return res.status(422).send({ error: 'Email is in use.' });
     }
 
+    const jwtSecret = process.env.EXPRESS_AUTH_API_JWT_SECRET_KEY;
+    if (!jwtSecret) {
+      console.error(`JWT Secret has not been set. Create the secret and assign it to EXPRESS_AUTH_API_JWT_SECRET_KEY environment variable.`);
+      res.status(500).send( { error: 'Internal error happened.' });
+    }
+    
     // If a user with email does NOT exist, create and save user record
     const newUser = new User({
       email: email,
@@ -28,9 +40,10 @@ exports.signUp = async (req, res, next) => {
     });
 
     await newUser.save();
+    console.log(`[debug]<authentication@signUp> newUser: \n`, newUser);
 
     // Respond to request indicating the user was created
-    res.json({ success: true });
+    res.json({ token: tokenForUser(newUser, jwtSecret) });
   } catch(err) {
     console.error(err);
     return next(err);
