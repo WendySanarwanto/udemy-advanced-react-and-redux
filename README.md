@@ -20,4 +20,12 @@ This repo contains coding exercises that were created when I followed Udemy's [A
 
   - Creating integration test for component which made API Request call by using `Axios`, through mocking the API call by using `moxios`'s methods: `install`, `uninstall`, `stubRequest`, `wait`.
 
+  - Apply navigation routes to each Components through using [react-router-dom](https://www.npmjs.com/package/react-router-dom)'s `Route` & `BrowserRouter` and render `Link` component for navigating to specific route's path. Note: This changes made the unit test & integration test are broken. We will fix these at end of course.
+
+  - Inject extra logic on a component through creating `High Order Component`, a mere function which add custom logic into the passed in child component.
+
+  - Replacing [redux-promise](https://www.npmjs.com/package/redux-promise) middleware with a custom middleware.
+  
+  - Set debug breakpoint by adding `debugger` line. 
+
 __TODO: Add more info here__
