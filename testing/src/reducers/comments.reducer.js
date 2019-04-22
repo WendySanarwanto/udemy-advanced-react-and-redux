@@ -17,7 +17,9 @@ export default function(state={}, action){
       return updatedState;
     case FETCH_COMMENTS:
       // console.log(`[debug]<FETCH_COMMENTS> action.payload.data: \n`, action.payload.data);
-      return {...state, ..._.mapKeys(action.payload.data, 'id')};
+      // debugger;
+      const comments = _.mapKeys(action.payload.data, 'id');
+      return {...state, ...comments};
     default:
       return state;
   }
