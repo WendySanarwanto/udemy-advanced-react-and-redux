@@ -8,7 +8,15 @@ const userSchema = new Schema({
     unique: true,
     lowercase: true
   },
-  password: String  
+  password: String,
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  timestamp: { // In milis
+    type: Number,
+    default: 0
+  }
 });
 
 // Create the model class
