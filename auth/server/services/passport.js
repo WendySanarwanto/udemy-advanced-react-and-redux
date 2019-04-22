@@ -15,7 +15,13 @@ const localLogin = new LocalStrategy( localLoginOptions, async ( email, password
     const user = await User.findOne({ email }).exec();
     if (!user) { return done(null, false); }
 
-    // TODO: compare password - is 'password' equal to user.password ?
+    // compare password - is 'password' equal to user.password ?
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return done(null, false);
+    }
+    // console.log(`[debug]<passport@localLogin> user: \n`, user);
+    done(null, user);
   } catch(err){
     console.error(err);
     done(err);
@@ -32,10 +38,11 @@ const jwtOptions = {
 // Create JWT Strategy
 const jwtLogin  = new JwtStrategy(jwtOptions, async(payload, done) => {
   try {
+    // TODO: See if the payload.exp is higher than current time
     // See if the user ID in the payload exists in our database
     const matchedUser = await User.findById(payload.sub).exec();
 
-    // If it does, call 'done' with the other
+    // If it does, call 'done' with null error and matched user
     if (matchedUser) {
       return done(null, matchedUser);
     } 
@@ -50,3 +57,4 @@ const jwtLogin  = new JwtStrategy(jwtOptions, async(payload, done) => {
 
 // Tell passport to use this strategy
 passport.use(jwtLogin);
+passport.use(localLogin);
