@@ -7,6 +7,9 @@ const http = require('http');
 const app = express();
 
 // App Setup
+app.use(morgan('combined')); // Logging framework
+app.use(bodyParser.json({ type: '*/*' }));
+
 
 // Server setup
 const port = process.env.PORT || 3090;
