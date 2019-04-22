@@ -1,5 +1,4 @@
 const Authentication = require('./controllers/authentication');
-const passportService = require('./services/passport');
 const passport = require('passport');
 
 // auth middleware - session = false, means we don't want to use cookie
