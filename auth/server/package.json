@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "mongodb": "docker run --name mongodb -d -p 27017:27017 mongo:4.1.10",
+    "mongodbstart": "docker start mongodb",
+    "mongodbstop": "docker stop mongodb"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.2",
+    "morgan": "^1.9.1"
+  }
+}
