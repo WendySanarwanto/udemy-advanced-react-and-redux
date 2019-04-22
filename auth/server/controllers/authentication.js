@@ -3,7 +3,12 @@ const User = require('../models/user');
 exports.signUp = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  console.log(`[debug]<authentication@signUp> email: ${email}, password: ${password}`);
+  // console.log(`[debug]<authentication@signUp> email: ${email}, password: ${password}`);
+
+  // TODO: Add more strict validations
+  if (!email || !password) {
+    return res.status(422).send({ error: 'You must provide email and password' });
+  }
   
   try {
     // See if a user with the given email exists
