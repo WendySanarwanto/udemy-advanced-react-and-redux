@@ -3,6 +3,24 @@ const User = require('../models/user');
 const jwtSecret = process.env.EXPRESS_AUTH_API_JWT_SECRET_KEY;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
+const LocalStrategy = require('passport-local');
+
+// Create local strategy
+const localLoginOptions = { usernameField: 'email' }; // tell passsword to lookup email field as username
+const localLogin = new LocalStrategy( localLoginOptions, async ( email, password, done ) => {
+  // Verify this username and password, call done with the user
+  // if it is the correct username and password
+  // otherwise, call done with false
+  try {
+    const user = await User.findOne({ email }).exec();
+    if (!user) { return done(null, false); }
+
+    // TODO: compare password - is 'password' equal to user.password ?
+  } catch(err){
+    console.error(err);
+    done(err);
+  }
+});
 
 // Setup options for JWT Strategy
 const jwtOptions = {
