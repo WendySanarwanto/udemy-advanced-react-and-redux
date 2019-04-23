@@ -9,8 +9,7 @@ export const signUp = (formValues, callback) => async (dispatch) => {
     response = await authApi.post(SIGNUP_API_PATH, formValues);
     dispatch({ type: AUTH_USER, payload: response.data.token });
     // console.log(`[debug]<action@signUp> response: \n`, response);
-    // TODO: Need to redirect to protected resource.
-    debugger;
+    localStorage.setItem(`token`, response.data.token);
     if (callback) { callback() }
   } catch(err) {
     // console.log(`[debug]<action@signUp> err: \n`, err);

@@ -6,9 +6,17 @@ import './index.css';
 import App from './components/App';
 import Root from './Root';
 
+const loadTokenFromLocalStorage = () => {
+  return { 
+    auth: { 
+      token: localStorage.getItem('token') 
+    } 
+  };
+}
+
 ReactDOM.render(
   <BrowserRouter>
-    <Root>
+    <Root initialState={ loadTokenFromLocalStorage() } >
       <Route path="/" component={ App } />>
     </Root>
   </BrowserRouter>,
