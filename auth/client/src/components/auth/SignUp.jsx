@@ -4,20 +4,32 @@ import { connect } from 'react-redux';
 import AuthForm from './AuthForm';
 import { signUp } from '../../actions/index.js';
 
+const SIGNUP_REDIRECT_URL_PATH = '/feature';
+
 const SignUp = props => {
   const onSubmit = (formValues) => {
     // console.log(`[debug]<SignUp@onSubmit> formValues: \n`, formValues);
     // console.log(`[debug]<SignUp@onSubmit> props: \n`, props);
-    props.signUp(formValues, props.history);
+    props.signUp(formValues, () => {
+      props.history.push(SIGNUP_REDIRECT_URL_PATH);
+    });
   };
   
+  let errorMessage = props.errorSignUp && props.errorSignUp !== '' ? props.errorSignUp : null;
+
   return (
     <div>
       <h4>Sign Up</h4>
       <br />    
-      <AuthForm onSubmit={ onSubmit }/>
+      <AuthForm onSubmit={ onSubmit } errorMessage={ errorMessage }/>
     </div>
   );
 };
 
-export default connect(null, { signUp })(SignUp);
+function mapStateToProps(state) {
+  return {
+    errorSignUp: state.auth.errorMessage
+  };
+}
+
+export default connect(mapStateToProps, { signUp })(SignUp);
