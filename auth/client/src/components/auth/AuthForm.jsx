@@ -1,17 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+import InputField from '../InputField';
 import { fieldTopGapStyle, handCursorStyle } from '../styles';
-
-const InputField = ({ input, label, id, type, placeholder, autoComplete }) => {
-  // console.log(`input: \n`, input);
-  return (
-    <div className="form-group">
-      <label htmlFor={ id }>{ label }</label>
-      <input {...input } autoComplete={ autoComplete } placeholder={ placeholder } type={ type } className="form-control" id={ id } />
-    </div>
-  );
-}
 
 const AuthForm = (props) => {
   const _onSubmit = (formValues) => {
