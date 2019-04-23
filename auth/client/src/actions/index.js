@@ -1,20 +1,34 @@
 import { AUTH_USER, AUTH_ERROR } from './types';
 import authApi from "../api/auth.axios";  
 
-const SIGNUP_API_PATH = '/signup'
+const SIGNUP_API_PATH = '/signup';
+const SIGNIN_API_PATH = '/signin';
+
+const doAuth = async (authApiPath, data, type, dispatch) => {
+  const response = await authApi.post(authApiPath, data);
+  dispatch({ type, payload: response.data.token });
+  localStorage.setItem(`token`, response.data.token);  
+}
 
 export const signUp = (formValues, callback) => async (dispatch) => {
-  let response;
   try {
-    response = await authApi.post(SIGNUP_API_PATH, formValues);
-    dispatch({ type: AUTH_USER, payload: response.data.token });
-    // console.log(`[debug]<action@signUp> response: \n`, response);
-    localStorage.setItem(`token`, response.data.token);
+    await doAuth(SIGNUP_API_PATH, formValues, AUTH_USER, dispatch);
     if (callback) { callback() }
   } catch(err) {
     // console.log(`[debug]<action@signUp> err: \n`, err);
-    response = err.response;
-    dispatch({ type: AUTH_ERROR, payload: response.data.error });
+    dispatch({ type: AUTH_ERROR, payload: err.response.data.error });
+  }
+};
+
+export const signIn = (formValues, callback) => async(dispatch) => {
+  // let response;
+  try {
+    await doAuth(SIGNIN_API_PATH, formValues, AUTH_USER, dispatch);
+    if (callback) { callback() }
+  } catch(err) {
+    // console.log(`[debug]<action@signUp> err: \n`, err);
+    // dispatch({ type: AUTH_ERROR, payload: err.response.data.error });
+    dispatch({ type: AUTH_ERROR, payload: 'Invalid login credenntials.' });
   }
 };
 
@@ -27,4 +41,5 @@ export const signOut = (callback) => {
     type: AUTH_USER,
     payload: ''
   }
-}
+};
+
