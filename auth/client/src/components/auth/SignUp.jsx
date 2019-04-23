@@ -7,7 +7,8 @@ import { signUp } from '../../actions/index.js';
 const SignUp = props => {
   const onSubmit = (formValues) => {
     // console.log(`[debug]<SignUp@onSubmit> formValues: \n`, formValues);
-    props.signUp(formValues);
+    // console.log(`[debug]<SignUp@onSubmit> props: \n`, props);
+    props.signUp(formValues, props.history);
   };
   
   return (
