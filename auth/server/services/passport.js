@@ -6,7 +6,8 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
 
 // Create local strategy
-const localLoginOptions = { usernameField: 'email' }; // tell passsword to lookup email field as username
+// tell local strategy to lookup email field as username field
+const localLoginOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy( localLoginOptions, async ( email, password, done ) => {
   // Verify this username and password, call done with the user
   // if it is the correct username and password
