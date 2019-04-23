@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import AuthForm from './AuthForm';
-import { signIn } from '../../actions/index.js';
+import { clearAuthErrorMessage, signIn } from '../../actions/index.js';
 
 const SIGNIN_REDIRECT_URL_PATH = '/feature';
 
@@ -14,6 +14,12 @@ const SignIn = props => {
     });
   };
 
+  useEffect(() => {
+    return function componentWillUnmount(){
+      props.clearAuthErrorMessage();
+    };
+  }, []);
+    
   let errorMessage = props.errorSignIn && props.errorSignIn !== '' ? props.errorSignIn : null;
 
   return (
@@ -31,4 +37,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { signIn })(SignIn);
+export default connect(mapStateToProps, { clearAuthErrorMessage, signIn })(SignIn);

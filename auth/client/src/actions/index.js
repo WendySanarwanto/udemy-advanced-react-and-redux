@@ -1,4 +1,4 @@
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR, CLEAR_AUTH_ERROR_MESSAGE } from './types';
 import authApi from "../api/auth.axios";  
 
 const SIGNUP_API_PATH = '/signup';
@@ -42,4 +42,10 @@ export const signOut = (callback) => {
     payload: ''
   }
 };
+
+export const clearAuthErrorMessage = () => {
+  return {
+    type: CLEAR_AUTH_ERROR_MESSAGE
+  };
+}
 
