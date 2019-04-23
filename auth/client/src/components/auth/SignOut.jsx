@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const SignOut = () => {
+import { signOut } from '../../actions';
+import requireAuth from '../requireAuth';
+
+const SignOut = props => {
+  useEffect(() => {
+    props.signOut();
+  }, [props]);
+
   return (
-    <div>Sign Out!</div>
+    <div>Sorry to see you go ...</div>
   );
 };
 
-export default SignOut;
+export default requireAuth(connect(null, { signOut })(SignOut));

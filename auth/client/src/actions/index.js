@@ -17,3 +17,14 @@ export const signUp = (formValues, callback) => async (dispatch) => {
     dispatch({ type: AUTH_ERROR, payload: response.data.error });
   }
 };
+
+export const signOut = (callback) => {
+  localStorage.removeItem('token');
+  if (callback) {
+    callback();
+  }
+  return {
+    type: AUTH_USER,
+    payload: ''
+  }
+}
