@@ -1,24 +1,34 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 
 import { fieldTopGapStyle, handCursorStyle } from '../styles';
 
-const AuthForm = () => {
+const InputField = ({ input, label, id, type, placeholder }) => {
+  return (
+    <div className="form-group">
+      <label htmlFor={ id }>{ label }</label>
+      <input {...input } placeholder={ placeholder } type={ type } className="form-control" id={ id } />
+    </div>
+  );
+}
+
+const AuthForm = (props) => {
+  const _onSubmit = (formValues) => {
+    props.onSubmit(formValues);
+  }
+
   return (
     <React.Fragment>
-      <form className="input-group">
-        <div className="form-group">
-          <label htmlFor="inputEmail">Email</label>
-          <input type="email" className="form-control" id="inputEmail" placeholder="e.g. john.smith@gmail.com" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="inputPassword" style={ fieldTopGapStyle } >Password</label>
-          <input type="password" className="form-control" id="inputPassword" placeholder="<your secret>" />        
-        </div>
+      <form className="input-group" onSubmit={ props.handleSubmit( _onSubmit ) }>
+        <Field id="inputEmail" name="email" component={ InputField } label="Email" type="email" placeholder="e.g. john.smith@gmail.com"/>
+        <Field id="inputPassword" name="password" component={ InputField } label="Password" type="password"/>
         <button type="submit" className="btn btn-primary" style={ {...fieldTopGapStyle, ...handCursorStyle} }>Submit</button>
       </form>
     </React.Fragment>
   );
 }
 
-export default AuthForm;
+export default reduxForm({
+  form: 'authForm',
+})(AuthForm);
 
