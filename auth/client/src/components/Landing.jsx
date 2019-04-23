@@ -2,7 +2,7 @@ import React from 'react';
 
 const Landing = () => {
   return (
-    <div>Landing !</div>
+    <h3>Welcome! Sign up or sign in !</h3>
   );
 };
 
