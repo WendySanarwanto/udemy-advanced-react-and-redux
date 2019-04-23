@@ -19,7 +19,7 @@ const SignUp = props => {
     return function componentWillUnmount(){
       props.clearAuthErrorMessage();
     };
-  }, []);
+  });
 
   let errorMessage = props.errorSignUp && props.errorSignUp !== '' ? props.errorSignUp : null;
   

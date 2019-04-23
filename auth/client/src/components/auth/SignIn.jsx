@@ -18,7 +18,7 @@ const SignIn = props => {
     return function componentWillUnmount(){
       props.clearAuthErrorMessage();
     };
-  }, []);
+  });
     
   let errorMessage = props.errorSignIn && props.errorSignIn !== '' ? props.errorSignIn : null;
 
