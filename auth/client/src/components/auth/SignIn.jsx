@@ -1,8 +1,10 @@
 import React from 'react';
 
+import AuthForm from './AuthForm';
+
 const SignIn = () => {
   return (
-    <div>Sign In!</div>
+    <AuthForm />
   );
 };
 

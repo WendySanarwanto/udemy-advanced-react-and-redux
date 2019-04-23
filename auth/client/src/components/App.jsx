@@ -4,9 +4,9 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import Header from './Header';
 import Landing from './Landing';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
-import SignOut from './SignOut';
+import SignUp from './auth/SignUp';
+import SignIn from './auth/SignIn';
+import SignOut from './auth/SignOut';
 
 const App = () => {
   return (
