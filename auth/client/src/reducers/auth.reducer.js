@@ -9,7 +9,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
     case SIGN_UP:
       let token = '';
-      if (action.payload.code === 200) {
+      if (action.payload.status === 200) {
         token = action.payload.data.token;
         return {...state, token};
       }
