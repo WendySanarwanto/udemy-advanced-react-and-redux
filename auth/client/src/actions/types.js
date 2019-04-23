@@ -1,5 +1,7 @@
-const SIGN_UP = 'SIGN_UP';
+const AUTH_USER = 'AUTH_USER';
+const AUTH_ERROR = 'AUTH_ERROR';
 
 export {
-  SIGN_UP
+  AUTH_USER,
+  AUTH_ERROR
 };
