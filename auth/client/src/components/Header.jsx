@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-default">
+    <nav className="navbar navbar-inverse">
       <div className="container-fluid">      
         <ul className="nav navbar-nav">
           <li><Link to="/">Redux Auth</Link></li>
