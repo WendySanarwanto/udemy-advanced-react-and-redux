@@ -1,4 +1,4 @@
-import { SIGN_UP } from '../actions/types';
+import { AUTH_USER, AUTH_ERROR } from '../actions/types';
 
 const INITIAL_STATE = {
   token: '',
@@ -7,16 +7,10 @@ const INITIAL_STATE = {
 
 const authReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
-    case SIGN_UP:
-      let token = '';
-      if (action.payload.status === 200) {
-        token = action.payload.data.token;
-        return {...state, token};
-      }
-
-      // TODO: Handle error message 
-
-      return {state};
+    case AUTH_USER:
+      return { ...state, token: action.payload };    
+    case AUTH_ERROR:
+      return { ...state, errorMessage: action.payload };    
     default:
       return state;
   }
