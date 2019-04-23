@@ -6,8 +6,8 @@ const UNAUTHENTICATED_REDIRECT_URL_PATH = '/';
 export default ChildComponent => {
   const ComposedComponent = props => { 
     const onAuthChanged = () => {
-      if (props.auth || ((typeof props.auth.token) !== 'string') || props.auth.token === '') {
-        props.history.push(UNAUTHENTICATED_REDIRECT_URL_PATH);
+      if (!props.auth || ((typeof props.auth.token) !== 'string') || props.auth.token === '') {
+        return props.history.push(UNAUTHENTICATED_REDIRECT_URL_PATH);
       }
     };
     
