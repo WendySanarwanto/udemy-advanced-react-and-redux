@@ -6,7 +6,7 @@ import requireAuth from './requireAuth';
 
 const Feature = () => {
   return (
-    <Typography component="h3" to="/" variant="h6" >This is secured faeture page.</Typography>
+    <Typography component="h3" to="/" variant="h6" >This is the secured feature page.</Typography>
   )
 };
 
