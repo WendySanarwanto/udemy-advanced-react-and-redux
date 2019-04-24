@@ -9,8 +9,10 @@ const cors = require('cors');
 const router = require('./router');
 const app = express();
 
+const MONGODB_CONNECTION_STRING = process.env.MONGODB_CONNECTION_STRING || `mongodb://localhost:auth/auth`;
+
 // DB Setup
-mongoose.connect(`mongodb://localhost:auth/auth`, { 
+mongoose.connect(MONGODB_CONNECTION_STRING, { 
   useNewUrlParser: true,
   useCreateIndex: true
 });
