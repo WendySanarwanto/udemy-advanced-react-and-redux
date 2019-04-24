@@ -1,10 +1,9 @@
 const Authentication = require('./controllers/authentication');
-const passport = require('passport');
+const passport = require('./services/passport');
 
 // auth middleware - session = false, means we don't want to use cookie
 const requireAuth = passport.authenticate('jwt', { session: false });
-// const requireSignin = passport.authenticate('login', { session: false }); --> does not work. Causing unable to find'local' strategy error
-const requireSignin = passport.authenticate('', { session: false });
+const requireSignin = passport.authenticate('local', { session: false });
 
 module.exports = (app) => {
   app.get('/', requireAuth, (req, res) => {
