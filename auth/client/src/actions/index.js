@@ -16,7 +16,7 @@ export const signUp = (formValues, callback) => async (dispatch) => {
     if (callback) { callback() }
   } catch(err) {
     // console.log(`[debug]<action@signUp> err: \n`, err);
-    dispatch({ type: AUTH_ERROR, payload: err.response.data.error });
+    dispatch({ type: AUTH_ERROR, payload: err.response ? err.response.data.error : err.message });
   }
 };
 
