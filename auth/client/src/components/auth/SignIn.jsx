@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import AuthForm from './AuthForm';
+// import AuthForm from './AuthForm';
+import AuthFormMaterial from './AuthFormMaterial';
 import { clearAuthErrorMessage, signIn } from '../../actions/index.js';
 
 const SIGNIN_REDIRECT_URL_PATH = '/feature';
@@ -16,17 +17,20 @@ const SignIn = props => {
 
   useEffect(() => {
     return function componentWillUnmount(){
+      console.log(`[debug]<SignIn@componentWillUnmount> is called.`);
       props.clearAuthErrorMessage();
     };
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ ]);
     
   let errorMessage = props.errorSignIn && props.errorSignIn !== '' ? props.errorSignIn : null;
 
   return (
     <div>
-      <h4>Sign In</h4>
-      <br />
-      <AuthForm onSubmit={ onSubmit } errorMessage={ errorMessage }/>
+      {/* <h4>Sign In</h4>
+      <br /> */}
+      {/* <AuthForm onSubmit={ onSubmit } errorMessage={ errorMessage }/> */}
+      <AuthFormMaterial onSubmit={ onSubmit } title="Sign in" errorMessage={ errorMessage } />
     </div>
   );
 };
