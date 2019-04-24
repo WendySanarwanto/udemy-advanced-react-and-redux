@@ -17,7 +17,7 @@ const loadTokenFromLocalStorage = () => {
 ReactDOM.render(
   <BrowserRouter>
     <Root initialState={ loadTokenFromLocalStorage() } >
-      <Route path="/" component={ App } />>
+      <Route path="/" component={ App } />
     </Root>
   </BrowserRouter>,
 document.querySelector('#root'));
