@@ -1,8 +1,9 @@
 import React from 'react';
+import { Typography } from '@material-ui/core';
 
 const Landing = () => {
   return (
-    <h3>Welcome! Sign up or sign in !</h3>
+    <Typography component="h3" to="/" variant="h6" >Welcome! Sign up or sign in !</Typography>
   );
 };
 

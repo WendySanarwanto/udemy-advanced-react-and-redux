@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import './App.css';
 import Header from './Header';
+import HeaderMaterial from './HeaderMaterial';
 import Landing from './Landing';
 import SignUp from './auth/SignUp';
 import SignIn from './auth/SignIn';
@@ -12,7 +13,8 @@ import Feature from './Feature';
 const App = () => {
   return (
     <div className="app container">
-      <Header />
+      {/* <Header /> */}
+      <HeaderMaterial />
       <Route path="/" exact component={ Landing } />
       <Route path="/signin" component={ SignIn } />
       <Route path="/signup" component={ SignUp } />
